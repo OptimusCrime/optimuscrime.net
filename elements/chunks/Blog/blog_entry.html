@@ -1,7 +1,9 @@
 <article>
     <h2><a href="[[~[[+id]]]]">[[+longtitle:default=`[[+pagetitle]]`]]</a></h2>
     <div class="blog-meta">
-        posted on April 6th, 2011 with <a href="#">2 comments</a>
+        posted on [[+publishedon:parse_published]] with <a href="[[~[[+id]]]]#comments">
+            <span class="fb-comments-count" data-href="[[++site_url]][[~[[+id]]]]"></span> comments
+        </a>
     </div>
     [[+introtext:neq=``:then=`<p class="introtext">[[+introtext]]</p>`]]
     [[+content:parse_content]]

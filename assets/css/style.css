@@ -162,6 +162,18 @@ main h3 {
     font-size: 30px;
     line-height: 30px;
 }
+main h1 a,
+main h2 a,
+main h3 a,
+main h4 a {
+    color: #616161;
+}
+main h1 a:hover,
+main h2 a:hover,
+main h3 a:hover,
+main h4 a:hover {
+    color: #db7030;
+}
 main p {
     padding-bottom: 15px;
 }
@@ -181,6 +193,7 @@ main pre.prettyprint {
     border: none;
     background-color: #eee;
     padding: 5px;
+    margin-bottom: 15px;
 }
 
 /*
@@ -192,6 +205,7 @@ main pre.prettyprint {
     padding-top: 20px;
     padding-bottom: 20px;
     border-bottom: 7px solid #eaeaea;
+    margin-bottom: 20px;
 }
 .banner h2 {
     text-align: right;
@@ -216,7 +230,6 @@ header h1 {
     margin: 0;
 }
 section {
-    padding-top: 20px;
     width: 100%;
     max-width: 610px;
     padding-bottom: 30px;
@@ -231,7 +244,6 @@ section .back {
     color: #f7f7f7;
     display: inline-block;
     font-size: 11px;
-    margin-bottom: 15px;
     padding: 3px 7px;
 }
 section .more:hover,
@@ -268,17 +280,18 @@ footer span:last-child::after {
 }
 
 /*
- * Frontpage
+ * Front page
  */
 #me {
     position: relative;
-    padding-bottom: 24px;
+    padding-bottom: 16px;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 #me-text {
     position: absolute;
     right: 0;
-    top: 10px;
+    top: 27px;
     width: 340px;
 }
 #me-text h3 {
@@ -291,6 +304,9 @@ footer span:last-child::after {
 /*
  * Blog
  */
+#blog article {
+    padding-bottom: 5px;
+}
 .blog-meta {
     border-bottom: 1px dashed #d1d1d1;
     border-top: 1px dashed #d1d1d1;

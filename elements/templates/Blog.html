@@ -1,0 +1,18 @@
+[[$head]]
+</head>
+<body class="frontpage">
+[[$top]]
+<section id="blog">
+    <article>
+        <header>
+            <h1>[[*longtitle:default=`[[*pagetitle]]`]]</h1>
+        </header>
+        <div class="blog-meta">
+            posted on [[*publishedon:parse_published]]
+        </div>
+        [[*introtext:neq=``:then=`<p class="introtext">[[*introtext]]</p>`]]
+        [[*content:parseContent]]
+        <div class="fb-comments" data-href="[[++site_url]][[~[[*id]]]]" data-numposts="5"></div>
+    </article>
+</section>
+[[$footer]]

@@ -3,16 +3,14 @@
 <body class="frontpage">
 [[$top]]
 <section id="me">
-    <div id="me-image">
-        <img src="assets/images/me.png" alt="OptimusCrime" />
-    </div>
+    <img src="assets/images/me.png" alt="OptimusCrime" />
     <div id="me-text">
         <h3>[[*introtext]]</h3>
         [[*content]]
     </div>
 </section>
 <section id="blog">
-    [[blog_get_entries?
+    [[!blog_get_entries?
         &page=`1`
         &limit=`7`
     ]]
