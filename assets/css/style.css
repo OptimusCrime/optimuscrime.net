@@ -314,6 +314,21 @@ footer span:last-child::after {
     font-size: 11px;
     margin-bottom: 20px;
 }
+.pagination-container {
+    border-top: 1px dashed #d1d1d1;
+    margin-top: 15px;
+    padding-top: 15px;
+    clear: both;
+}
+.pagination-item {
+    display: block;
+    width: 50%;
+    float: left;
+}
+.pagination-item-right {
+    float: right;
+    text-align: right;
+}
 
 /*
  * Tablet
