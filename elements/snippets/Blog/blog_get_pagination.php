@@ -1,4 +1,9 @@
 <?php
+/*
+ * This snippets builds the blog pagination buttons that are visible
+ * at the bottom at the blog container if there are entries that user
+ * does not currently see. 
+ */
 
 // Get number of blog entries
 $c = $modx->newQuery('modResource');
@@ -28,4 +33,4 @@ if ($entries > $display_end) {
     $ret .= $modx->getChunk('blog_button_next', ['page' => ($current_page + 1)]);
 }
 
-return $current_page . $ret;
+return $ret;

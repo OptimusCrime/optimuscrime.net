@@ -1,4 +1,14 @@
 <?php
+/*
+ * This plugin identifies the "prettified" pagination page the user
+ * is currently browsing. Used to populate the blog container, the
+ * redirect plugin and the pagination snippet. It finds the page
+ * by taking the URL and splitting on the alias it knows is the 
+ * blog container. If any numeric ids are found directly after this
+ * alias, then we know we have a valid page to return, otherwise it
+ * will simply return 1.
+ */
+
 // Get the full URL
 $full_url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 

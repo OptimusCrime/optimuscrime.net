@@ -1,4 +1,9 @@
 <?php
+/*
+ * This snippet returns x blog entries. Uses calculations to 
+ * make use of pagination in the limit method.
+ */
+
 $ret = '';
 
 // Create query

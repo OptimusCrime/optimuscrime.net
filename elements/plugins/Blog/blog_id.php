@@ -1,4 +1,15 @@
 <?php
+/*
+ * This plugin fires on the update/save event for Resources
+ * It is used to override the default alias (sanitized pagetitle)
+ * so it includes the ID of the post on the form [id]-[pagetitle].
+ * The plugin is smart enough to figure out the ID itself if it is
+ * not present (the Resource is new), however this is an ugly hack.
+ * Also note that this plugin does not cover all cases. It does not
+ * handle duplication of resources. That should be added in the future
+ * I guess.
+ */
+
 // This should be hooked on OnBeforeDocFormSave only
 if ($modx->event->name == 'OnBeforeDocFormSave') {
     // Make sure we have a resource
