@@ -25,12 +25,18 @@ $display_start = ($current_page - 1) * $limit;
 $display_end = $display_start + $limit;
 
 // Check if we should display back and forward buttons
-$ret = '';
+$buttons = [];
 if ($display_start > 0) {
-    $ret .= $modx->getChunk('blog_button_previous', ['page' => (($current_page == 2) ? '' : ($current_page - 1))]);
+    $buttons['previous'] = $modx->getChunk('blog_button_previous', ['page' => (($current_page == 2) ? '' : ($current_page - 1))]);
 }
 if ($entries > $display_end) {
-    $ret .= $modx->getChunk('blog_button_next', ['page' => ($current_page + 1)]);
+    $buttons['next'] = $modx->getChunk('blog_button_next', ['page' => ($current_page + 1)]);
 }
 
-return $ret;
+// Check if we have anything to parse in chunks
+if (count($buttons) == 0) {
+    return '';
+}
+
+// If we got here then we have buttonz
+return $modx->getChunk('blog_button_container', $buttons);

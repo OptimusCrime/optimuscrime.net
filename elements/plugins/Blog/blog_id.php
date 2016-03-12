@@ -53,7 +53,6 @@ if ($modx->event->name == 'OnBeforeDocFormSave') {
                 // Add the alias value itself to the new alias
                 $alias .= $temp_alias;
                 
-                
                 // Set the new alias, the processor does everything else
                 $resource->alias = $alias;
             }
