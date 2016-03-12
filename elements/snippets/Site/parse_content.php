@@ -1,2 +1,2 @@
 <?php
-return str_replace('}}', '</code>', str_replace('{{', '<code>', $input));
+return str_replace(['}}', '{{', '<p>[more]</p>'], ['<code>', '</code>', ''], $input);
