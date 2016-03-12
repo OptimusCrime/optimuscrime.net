@@ -10,6 +10,18 @@ $c->where(array(
 ));
 $c->sortby('publishedon', 'DESC');
 
+// Calculate the offset
+$offset_base = 1;
+if (isset($page) and $page != null and is_numeric($page)) {
+    $offset_base = $page;
+}
+else {
+    $offset_base = $modx->runSnippet('blog_get_current_page', []);
+}
+
+// Apply the offset
+$c->limit($limit, ($offset_base - 1) * $limit);
+
 // Get collection
 $col = $modx->getCollection('modResource', $c);
 

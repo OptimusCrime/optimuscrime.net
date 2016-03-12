@@ -21,8 +21,27 @@ if ($modx->event->name == 'OnBeforeDocFormSave') {
             
             // Check if we should indeed override the alias
             if ($new_alias) {
-                // Generate a new alias
-                $alias = $resource->id . '-' . $temp_alias;
+                $alias = '';
+                
+                // Check if we have id defined
+                if ($resource->id !== null) {
+                    $alias = $resource->id . '-';
+                }
+                else {
+                    // No id available, this is a new post. What follows is the uglies hack ever written
+                    $c = $modx->newQuery('modResource');
+                    $c->sortby('id', 'DESC');
+                    $c->limit(1);
+                    $obj = $modx->getObject('modResource', $c);
+                    
+                    if ($obj) {
+                        $alias = ($obj->get('id') + 1) . '-';
+                    }
+                }
+                
+                // Add the alias value itself to the new alias
+                $alias .= $temp_alias;
+                
                 
                 // Set the new alias, the processor does everything else
                 $resource->alias = $alias;
