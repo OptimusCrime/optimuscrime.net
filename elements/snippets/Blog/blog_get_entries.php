@@ -25,6 +25,12 @@ $c->limit($limit, ($offset_base - 1) * $limit);
 // Get collection
 $col = $modx->getCollection('modResource', $c);
 
+// Check if we should redirect the user (because empty result)
+if (count($col) == 0 and $offset_base != 1) {
+    $modx->sendRedirect($modx->makeUrl(2) . ($offset_base - 1));
+    return;
+}
+
 // Loop collection
 foreach ($col as $v) {
     $data = $v->toArray();

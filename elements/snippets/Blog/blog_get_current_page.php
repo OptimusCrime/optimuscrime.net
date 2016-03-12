@@ -8,11 +8,6 @@ if (count($full_url_query_split) > 1) {
     $full_url = $full_url_query_split[0];
 }
 
-// Make sure we have everything we need to continue
-if (!$resource) {
-    return 1;
-}
-
 // Get to fetch the object
 $obj = $modx->getObject('modResource', 2);
 if (!$obj) {
@@ -27,9 +22,12 @@ if (count($url_split) > 1) {
     $alias_endfix = $url_split[1];
     $alias_endfix_split = explode('/', $alias_endfix);
     
-    $alias_to_match = $alias_endfix_split[0];
-    if (is_numeric($alias_to_match)) {
-        return (int) $alias_to_match;
+    // Loop the remaining url and find the first with some actual content
+    $alias_to_match = null;
+    foreach ($alias_endfix_split as $v) {
+        if (strlen($v) > 0 and is_numeric($v)) {
+            return (int) $v;
+        }
     }
 }
 
