@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+
+  ###############################################
+  #                    Files                    #
+  ###############################################
+
+  appdata:
+    image: "alpine:3.5"
+    command: tail -f /dev/null
+    user: "1000"
+    network_mode: "none"
+    volumes:
+      - .:/var/www/html
+
+
+  ###############################################
+  #                  Webserver                  #
+  ###############################################
+
+  server:
+    restart: always
+    depends_on:
+      - appdata
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    environment:
+      - docker=1
+      - COMPOSER_ALLOW_SUPERUSER=1
+    volumes_from:
+      - appdata

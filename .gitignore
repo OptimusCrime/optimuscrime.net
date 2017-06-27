@@ -1,8 +1,4 @@
-# Ignore idea stuff
-.idea
-
-# Ignore MAC stuff
 .DS_Store
-
-# Ignore the checksums
-checksums.json
+.idea
+vendor
+composer.phar
