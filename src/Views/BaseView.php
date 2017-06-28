@@ -4,7 +4,7 @@ namespace OptimusCrime\Views;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Slim\Container;
 
-class Base
+class BaseView
 {
     private $templateData;
     protected $container;
@@ -29,7 +29,7 @@ class Base
     }
     protected function render404(Response $response)
     {
-        return $this->render($response, 'errors/404.tpl', [
+        return $this->render($response, '404.tpl', [
         ]);
     }
 }

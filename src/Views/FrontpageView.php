@@ -5,7 +5,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Slim\Container;
 
-class Frontpage extends Base
+class FrontpageView extends BaseView
 {
     public function __construct(Container $container)
     {

@@ -25,12 +25,12 @@ class App
 
     private function routes()
     {
-        $this->app->get('/', '\OptimusCrime\Views\Frontpage:view')->setName('home');
-        $this->app->get('/{page:[0-9]+}-{alias:.*}', '\OptimusCrime\Views\Post:view')->setName('post');
+        $this->app->get('/', '\OptimusCrime\Views\FrontpageView:view')->setName('home');
+        $this->app->get('/{id:[0-9]+}-{alias:.*}', '\OptimusCrime\Views\PostView:view')->setName('post');
 
         // Old site
-        $this->app->get('/blog/', '\OptimusCrime\Views\Frontpage:view');
-        $this->app->get('/blog/{page:[0-9]+}-{alias:.*}', '\OptimusCrime\Views\Post:view');
+        $this->app->get('/blog/', '\OptimusCrime\Views\FrontpageView:view');
+        $this->app->get('/blog/{id:[0-9]+}-{alias:.*}', '\OptimusCrime\Views\PostView:view');
     }
 
     private function dependencies()
