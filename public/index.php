@@ -8,8 +8,8 @@ if (PHP_SAPI == 'cli-server') {
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use \OptimusCrime\Website;
-use \OptimusCrime\Website\SettingsParser;
+use OptimusCrime\App;
+use OptimusCrime\Helpers\SettingsParser;
 
 
 $settingsParser = new SettingsParser();
@@ -17,5 +17,5 @@ $settingsParser->parse([
     __DIR__ . '/../config/default-settings.php',
     __DIR__ . '/../config/settings.php'
 ]);
-$app = new Website($settingsParser->getSettings());
+$app = new App($settingsParser->getSettings());
 $app->run();
