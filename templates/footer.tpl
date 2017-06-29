@@ -13,5 +13,4 @@
     </script>[[+/if]]
 
 </body>
-</body>
 </html>
