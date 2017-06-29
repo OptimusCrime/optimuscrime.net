@@ -5,6 +5,8 @@ use OptimusCrime\Post;
 
 class PostParser
 {
+    const CHARSET = 'UTF-8';
+
     const TITLE = 0;
     const FULL = 1;
 
@@ -29,14 +31,26 @@ class PostParser
         return $this->path . DIRECTORY_SEPARATOR . 'posts' . DIRECTORY_SEPARATOR . $id . '.md';
     }
 
-    public function titleToAlias($title)
+    public static function titleToAlias($title)
     {
-        // All lowercase
         $title = strtolower($title);
+        $title = str_replace('&nbsp;', ' ', $title);
+        $title = html_entity_decode($title, ENT_QUOTES, self::CHARSET);
+        $title = str_replace('&', 'and', $title);
 
-        // Remove everything except alphanumeric, +, -, and ...?
-        // TODO
-        return $title;
+        // Some weird handling of converting charset and such
+        $title = iconv(mb_detect_encoding($title), self::CHARSET . '//TRANSLIT//IGNORE', $title);
+
+        // This regex removed all non-url valid characters from the string
+        $title = preg_replace('/[\0\x0B\t\n\r\f\a&=+%#<>"~`@\?\[\]\{\}\|\^\'\\\\]/', '', $title);
+
+        // Replace spaces with a dash
+        $title = preg_replace('/\s+/u', '-', $title);
+
+        // Replace multiple dashes into a single dash
+
+        // Convert to lowercase
+        return mb_convert_case($title, MB_CASE_LOWER, self::CHARSET);
     }
 
     public function getPost($id, $mode = self::FULL)

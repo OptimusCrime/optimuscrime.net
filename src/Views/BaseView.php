@@ -12,7 +12,10 @@ class BaseView
     public function __construct(Container $container)
     {
         $this->container = $container;
-        $this->templateData = [];
+        $this->templateData = [
+            'SITE_SETTINGS' => $this->container->get('settings')['site'],
+            'TITLE' => 'OptimusCrime.net'
+        ];
     }
 
     protected function setTemplateData($key, $value)
@@ -30,6 +33,7 @@ class BaseView
     protected function render404(Response $response)
     {
         return $this->render($response, '404.tpl', [
+            'TITLE' => 'Page not found! :: OptimusCrime.net'
         ]);
     }
 }

@@ -12,6 +12,8 @@ return [
 
             'GOOGLE_ANALYTICS' => false,
 
+            'GOOGLE_ANALYTICS_CODE' => '',
+
             'EMAIL_CONTACT' => 'foo@bar.tld'
         ],
     ],

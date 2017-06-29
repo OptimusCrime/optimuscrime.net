@@ -1,6 +1,8 @@
 <?php
 namespace OptimusCrime;
 
+use OptimusCrime\Helpers\PostParser;
+
 class Post
 {
     const FULL = 1;
@@ -118,9 +120,14 @@ class Post
         return $this->shortContent;
     }
 
+    public function getAlias()
+    {
+        return PostParser::titleToAlias($this->title);
+    }
+
     public function parseMarkdown()
     {
-        $markdownParser = new \cebe\markdown\Markdown();
+        $markdownParser = new \cebe\markdown\GithubMarkdown();
 
         if ($this->intro !== null and strlen($this->intro) > 0) {
             $this->intro = $markdownParser->parse($this->intro);
