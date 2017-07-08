@@ -13,7 +13,7 @@ RUN a2enmod rewrite
 RUN apt-get update && apt-get install -y zlib1g-dev
 
 # Rewrite Apache document root location
-RUN sed -i 's/\/var\/www\/html/\/var\/www\/html\/public/g' /etc/apache2/sites-available/000-default.conf
+COPY .docker/000-default.conf /etc/apache2/sites-available/
 
 # Install PHP extensions
 RUN docker-php-ext-install zip

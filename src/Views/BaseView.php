@@ -14,7 +14,7 @@ class BaseView
         $this->container = $container;
         $this->templateData = [
             'SITE_SETTINGS' => $this->container->get('settings')['site'],
-            'TITLE' => 'OptimusCrime.net'
+            'SITE_TITLE' => 'OptimusCrime.net'
         ];
     }
 
@@ -33,7 +33,7 @@ class BaseView
     protected function render404(Response $response)
     {
         return $this->render($response, '404.tpl', [
-            'TITLE' => 'Page not found! :: OptimusCrime.net'
+            'SITE_TITLE' => 'Page not found! :: OptimusCrime.net'
         ]);
     }
 }

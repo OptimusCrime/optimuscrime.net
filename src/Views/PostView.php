@@ -34,7 +34,8 @@ class PostView extends BaseView
 
         return $this->render($response, 'post.tpl', [
             'ID' => $post->getId(),
-            'TITLE' => $post->getTitle() . ' :: OptimusCrime.net',
+            'TITLE' => $post->getTitle(),
+            'SITE_TITLE' => $post->getTitle() . ' :: OptimusCrime.net',
             'ALIAS' => $post->getAlias(),
             'POSTED' => $post->getPosted(),
             'EDITED' => $post->getEdited(),
