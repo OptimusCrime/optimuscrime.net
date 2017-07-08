@@ -1,7 +1,6 @@
 <?php
 namespace OptimusCrime\Helpers;
 
-
 class FeedParser
 {
     const POST_FILE_EXPRESSION = '/(?P<id>\d+)\.md$/';

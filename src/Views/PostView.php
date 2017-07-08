@@ -4,6 +4,7 @@ namespace OptimusCrime\Views;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Slim\Container;
+
 use OptimusCrime\Post;
 use OptimusCrime\Helpers\PostParser;
 
@@ -32,15 +33,13 @@ class PostView extends BaseView
             return $this->render404($response);
         }
 
-        return $this->render($response, 'post.tpl', [
-            'ID' => $post->getId(),
-            'TITLE' => $post->getTitle(),
+        return $this->render($response, 'listing.tpl', [
             'SITE_TITLE' => $post->getTitle() . ' :: OptimusCrime.net',
-            'ALIAS' => $post->getAlias(),
-            'POSTED' => $post->getPosted(),
-            'EDITED' => $post->getEdited(),
-            'INTRO' => $post->getIntro(),
-            'CONTENT' => $post->getContent()
+            'POSTS_MODE' => BaseView::POST,
+            'POSTS' => [
+                $post
+            ],
+            'POSTS_CONTENT_MODE' => Post::FULL
         ]);
     }
 }

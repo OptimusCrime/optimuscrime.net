@@ -12,12 +12,22 @@
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-    <div class="container">
-        <header class="top">
+<body[[+if $POSTS_MODE === $MODE_FRONTPAGE]] class="frontpage"[[+elseif $POSTS_MODE === $MODE_POST]] class="post"[[+/if]]>
+<div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=536536956507787";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <header class="top">
+        <div class="container">
             <h1>
                 <a href="[[+base_url]]">OptimusCrime.net</a>
             </h1>
             <h2>Computers &amp; Programming</h2>
-        </header>
+        </div>
+    </header>
+    <div class="container">
         <main>

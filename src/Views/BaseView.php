@@ -6,6 +6,10 @@ use \Slim\Container;
 
 class BaseView
 {
+    const NONE = 0;
+    const FRONTPAGE = 1;
+    const POST = 2;
+
     private $templateData;
     protected $container;
 
@@ -14,7 +18,12 @@ class BaseView
         $this->container = $container;
         $this->templateData = [
             'SITE_SETTINGS' => $this->container->get('settings')['site'],
-            'SITE_TITLE' => 'OptimusCrime.net'
+            'SITE_TITLE' => 'OptimusCrime.net',
+
+            'POSTS_MODE' => self::NONE,
+
+            'MODE_FRONTPAGE' => self::FRONTPAGE,
+            'MODE_POST' => self::POST
         ];
     }
 
