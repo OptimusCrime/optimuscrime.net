@@ -107,6 +107,10 @@ class PostParser
     private static function parsePostMeta(Post $post, $line)
     {
         $lineSplit = explode(':', $line);
+        if (count($lineSplit) > 2) {
+            $lineSplit = self::fixPostMetaSplit($lineSplit);
+        }
+
         if (!in_array($lineSplit[0], ['Published', 'Title', 'Posted', 'Edited'])) {
             return;
         }
@@ -137,5 +141,16 @@ class PostParser
             $post->setTitle($value);
             return;
         }
+    }
+
+    private static function fixPostMetaSplit(array $split)
+    {
+        $newSplit = [];
+        $newSplit[] = $split[0];
+        unset($split[0]);
+
+        $newSplit[] = implode(':', $split);
+
+        return $newSplit;
     }
 }
