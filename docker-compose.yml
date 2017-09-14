@@ -20,7 +20,6 @@ services:
   ###############################################
 
   server:
-    restart: always
     depends_on:
       - appdata
     build:
