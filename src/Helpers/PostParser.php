@@ -111,7 +111,7 @@ class PostParser
             $lineSplit = self::fixPostMetaSplit($lineSplit);
         }
 
-        if (!in_array($lineSplit[0], ['Published', 'Title', 'Posted', 'Edited'])) {
+        if (!in_array($lineSplit[0], ['Published', 'Title', 'Posted', 'Edited', 'Description'])) {
             return;
         }
 
@@ -139,6 +139,11 @@ class PostParser
 
         if ($lineSplit[0] === 'Title') {
             $post->setTitle($value);
+            return;
+        }
+
+        if ($lineSplit[0] === 'Description') {
+            $post->setDescription($value);
             return;
         }
     }

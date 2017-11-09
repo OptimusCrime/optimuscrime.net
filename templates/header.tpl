@@ -6,6 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
     <title>[[+$SITE_TITLE]]</title>
+    <meta name="description" content="[[+if isset($SITE_DESC) and $SITE_DESC != null]][[+$SITE_DESC]][[+else]]A blog about computers and programming.[[+/if]]" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Oxygen:400,700,300|Crimson+Text:400,400italic&amp;subset=latin,latin-ext" >
     <link rel="stylesheet" href="assets/css/normalize.css">

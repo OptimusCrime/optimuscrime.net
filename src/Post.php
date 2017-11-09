@@ -13,6 +13,7 @@ class Post
 
     private $title;
     private $intro;
+    private $description;
 
     private $posted;
     private $edited;
@@ -25,11 +26,17 @@ class Post
         $this->published = true;
         $this->shortContent = '';
         $this->fullContent = '';
+        $this->description = null;
     }
 
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    public function setDescription($descrption)
+    {
+        $this->description = $description;
     }
 
     public function setPublished($flag)
@@ -80,6 +87,11 @@ class Post
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getDescription() 
+    {
+        return $this->description;
     }
 
     public function isPublished()
