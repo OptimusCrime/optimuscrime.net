@@ -35,7 +35,7 @@ class PostView extends BaseView
 
         return $this->render($response, 'listing.tpl', [
             'SITE_TITLE' => $post->getTitle() . ' :: OptimusCrime.net',
-            'SITE_DESCRIPTION' => $post->getDescription(),
+            'SITE_DESC' => $post->getDescription(),
             'POSTS_MODE' => BaseView::POST,
             'POSTS' => [
                 $post

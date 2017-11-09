@@ -34,7 +34,7 @@ class Post
         $this->id = $id;
     }
 
-    public function setDescription($descrption)
+    public function setDescription($description)
     {
         $this->description = $description;
     }
