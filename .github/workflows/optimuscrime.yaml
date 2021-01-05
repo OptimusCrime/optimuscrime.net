@@ -1,0 +1,47 @@
+name: codereviewgifs
+on:
+    push:
+        branches: master
+    pull_request:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+
+            ##############################################################
+            # Workflow setup
+            ##############################################################
+
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Get release version
+              id: get_version
+              run: echo "name=RELEASE_VERSION::$(echo $GITHUB_SHA | cut -c1-8)" >> $GITHUB_ENV
+
+            ##############################################################
+            # Build
+            ##############################################################
+
+            - name: Setup PHP with specific version of PECL extension
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.0'
+                  tools: composer
+            - name: Install site backend dependencies
+              run: |
+                composer install
+                cd _scripts && php build.php
+
+            ##############################################################
+            # Build and push docker images
+            ##############################################################
+
+            - name: Build and publish nginx to Registry
+              uses: elgohr/Publish-Docker-Github-Action@master
+              with:
+                  name: optimuscrime/personal-website-nginx
+                  username: ${{ secrets.DOCKERHUB_USERNAME }}
+                  password: ${{ secrets.DOCKER_PASSWORD }}
+                  dockerfile: docker_nginx.Dockerfile
+                  tags: "latest,${{ env.RELEASE_VERSION }}"

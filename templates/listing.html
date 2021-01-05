@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+{% for post in posts %}
+    <article>
+        <header>
+            <h2>
+                {% if class == 'frontpage' %}
+                <a href="{{ url_for('post', {'id': post.getId(), 'alias': post.getAlias()})}}">
+                    {{ post.getTitle() }}
+                </a>
+                {% else %}
+                    {{ post.getTitle() }}
+                {% endif %}
+            </h2>
+            <div class="meta">
+                <p>Posted: {{ post.getPosted() }}{% if post.getEdited() != null %}}<span>|</span>Edited: {{ post.getEdited() }}{% endif %}</p>
+            </div>
+        </header>
+        {% if post.getIntro() != null %}
+            <div class="intro">
+                {{ post.getIntro()|raw }}
+            </div>
+        {% endif %}
+        {{ post.getContent()|raw }}
+    </article>
+{% endfor %}
+{% endblock %}

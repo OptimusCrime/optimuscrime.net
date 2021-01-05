@@ -12,11 +12,8 @@ insert_final_newline = true
 [Makefile]
 indent_style = tab
 
-[*.yml]
+[{*.yml,*.json}]
 indent_size = 2
-
-[*.tpl]
-insert_final_newline = false
 
 [*.md]
 insert_final_newline = false

@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import datetime as dt
-import time 
+import time
 import numpy as np
 
 import gzip
@@ -52,11 +52,10 @@ def load_file(url):
 	return data.decode('utf-8')
 
 def plot_issues(x, y):
-	
 	fig = plt.figure(figsize=(16, 6), dpi=80)
-	ax = fig.add_subplot(111)                              
-	ax.grid(which='minor', alpha=0.2)                                                
-	ax.grid(which='major', alpha=0.5)   
+	ax = fig.add_subplot(111)
+	ax.grid(which='minor', alpha=0.2)
+	ax.grid(which='major', alpha=0.5)
 	ax.margins(0)
 	ax.tick_params(axis='x', which='major', labeltop=False, labelright=False, top=False)
 	ax.tick_params(axis='x', which='minor', labeltop=False, labelright=False, top=False, bottom=False)
@@ -95,7 +94,7 @@ def reformat_to_data(y_axis, issues):
 	for key, val in y_axis.items():
 		if val > 0:
 			offset += val
-		
+
 		values.append(offset)
 	return values
 

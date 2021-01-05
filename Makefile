@@ -1,35 +1,19 @@
-.PHONY: all bash build clean down logs restart start status stop tail
+.PHONY: php-build php-run nginx-build nginx-run stop logs
 
-SERVER_SERVICE_NAME = server
+php-build:
+	@docker build -f docker_php.Dockerfile .
 
-all: build start
+php-run:
+	@docker run -d -v "$(pwd)":/site -p 8080:8080 $$(docker images -q | head -n 1)
 
-bash:
-	@docker-compose run --rm $(SERVER_SERVICE_NAME) bash
+nginx-build:
+	@docker build -f docker_nginx.Dockerfile .
 
-build:
-	@docker-compose build
-
-clean:
-	stop
-	@docker-compose rm --force
-
-down:
-	@docker-compose down
-
-logs:
-	@docker-compose logs -f
-
-restart: stop start
-
-start:
-	@docker-compose up -d
-
-status:
-	@docker-compose ps
+nginx-run:
+	@docker run -d -p 8081:80 $$(docker images -q | head -n 1)
 
 stop:
-	@docker-compose stop
+	@docker stop $$(docker ps -a -q)
 
-tail:
-	@docker-compose logs $(SERVER_SERVICE_NAME)
+logs:
+	@docker logs $$(docker ps -a -q | head -n 1) -f
