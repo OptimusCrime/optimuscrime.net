@@ -4,7 +4,7 @@ php-build:
 	@docker build -f docker_php.Dockerfile .
 
 php-run:
-	@docker run -d -v "$(pwd)":/site -p 8080:8080 $$(docker images -q | head -n 1)
+	@docker run -d -v "$$(pwd)":/site -p 8080:8080 $$(docker images -q | head -n 1)
 
 nginx-build:
 	@docker build -f docker_nginx.Dockerfile .

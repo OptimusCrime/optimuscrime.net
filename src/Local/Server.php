@@ -33,7 +33,7 @@ class Server
         $this->url = parse_url($_SERVER['REQUEST_URI'])['path'];
 
         $postsService = new PostsService($rootDir);
-        $twigService = new TwigService(Configuration::SERVER);
+        $twigService = new TwigService($rootDir, Configuration::SERVER);
 
         $this->renderService = new RenderService($postsService, $twigService);
     }

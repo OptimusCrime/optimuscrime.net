@@ -21,13 +21,13 @@ class TwigService
 
     private Environment $twig;
 
-    public function __construct(string $mode)
+    public function __construct(string $rootDir, string $mode)
     {
         $this->mode = $mode;
 
         $this->twig = new Environment(
             new FilesystemLoader(
-                'templates/'
+                $rootDir . '/templates/'
             )
         );
 

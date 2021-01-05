@@ -1,6 +1,7 @@
 <?php
 namespace OptimusCrime\Site\Generator;
 
+use OptimusCrime\Site\Configuration\Configuration;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -34,7 +35,7 @@ class Generator
         $this->rootDir = $rootDir;
 
         $this->postsService = new PostsService($rootDir);
-        $this->twigService = new TwigService($rootDir);
+        $this->twigService = new TwigService($rootDir, Configuration::GENERATOR);
 
         $this->renderService = new RenderService($this->postsService, $this->twigService);
     }
@@ -44,6 +45,7 @@ class Generator
      * @throws RuntimeError
      * @throws SyntaxError
      * @throws GeneratorException
+     * @throws PostNotFoundException
      */
     public function run(): void
     {
