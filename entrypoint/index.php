@@ -1,5 +1,7 @@
 <?php
-if (!(include __DIR__ . '/../vendor/autoload.php')) {
+$rootDir = dirname(dirname(__FILE__));
+
+if (!(include $rootDir . '/vendor/autoload.php')) {
     error_log('Dependencies are not installed!', E_USER_ERROR);
     header("HTTP/1.1 500 Internal Server Error");
     die();
@@ -8,7 +10,7 @@ if (!(include __DIR__ . '/../vendor/autoload.php')) {
 use OptimusCrime\Site\Local\Server;
 
 try {
-    $server = new Server(dirname(__DIR__));
+    $server = new Server($rootDir);
     $server->run();
 }
 catch (Exception $e) {

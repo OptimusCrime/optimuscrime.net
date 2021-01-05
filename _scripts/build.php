@@ -1,8 +1,7 @@
 <?php
+$rootDir = dirname(dirname(__FILE__));
 
-use OptimusCrime\Site\Generator\Generator;
-
-if (!(include __DIR__ . '/../vendor/autoload.php')) {
+if (!(include $rootDir . '/vendor/autoload.php')) {
     error_log('Dependencies are not installed!', E_USER_ERROR);
     header("HTTP/1.1 500 Internal Server Error");
     die();
@@ -13,8 +12,10 @@ if (php_sapi_name() !== 'cli') {
     die('Script must be called from cli');
 }
 
+use OptimusCrime\Site\Generator\Generator;
+
 try {
-    $generator = new Generator(dirname(__DIR__));
+    $generator = new Generator($rootDir);
     $generator->run();
 }
 catch (Exception $e) {
